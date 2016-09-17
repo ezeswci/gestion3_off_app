@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <!--
+	<link type="image/x-icon" href="favicon(1).ico" rel="icon" />
+	<link type="image/x-icon" href="favicon(1).ico" rel="shortcut icon" />
+    -->
+    <link type="image/x-icon" href="img/favicon.ico" rel="icon"  />
+    <title>Gestion Comercial</title>
+	<script type="text/javascript" src="cordova.js" ></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+		<script src="js/jquery-1.10.2.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/jquery-maskedinput.min.js"></script>
+		<script src='js/jquery.zoom.min.js'></script>
+		<script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+	<link href="css/loading.css" rel="stylesheet">
+	<link href="css/signin.css" rel="stylesheet">
+	<link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- <script src="js/variables/variablesTest.js"></script> -->
+    <script src="js/loading.js"></script>
+    <script src="js/mostrar_alerta.js"></script>
+	<script src="js/leerVariablesFactura_03.js"></script>
+	<script src="js/leerProductos.js"></script>
+	<script src="js/grabarFactura.js"></script>
+	<script src="js/Cookie_swci.js"></script>
+	<script src="js/enter2tab.js"></script>
+	<!-- <script src="js/facura_confirmar.js"></script>-->
+	<script src="js/ie-emulation-modes-warning.js"></script>
+        <!-- Start Monkey-Dialog JavaScript -->
+        <link href="plugins/dialog-master/css/bootstrap-dialog.css" rel="stylesheet" type="text/css" />
+        <script src="plugins/dialog-master/js/bootstrap-dialog.js?1"></script>
+		<!-- End Monkey-Dialog JavaScript -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body onLoad="leerVariablesFactura();leerProductos()">
+	<input type="hidden" name="cliente" id="cliente" value='0' />
+    <input type="hidden" name="tipo_comprobante" id="tipo_comprobante" value="" />
+    <input type="hidden" name="contacto_razon_social" id="contacto_razon_social" value="" />
+    <!-- <div class="container"> -->
+		<h2 class="text-center" >Gestion Comercial</h2>
+	<div class="tab-content">
+    <div id="tab_productos"> <!-- Comienzo tab productos -->
+		<div class="row">
+			<div class="col-xs-6"><h2 class="form-signin-heading text-center">Producto</h2></div>
+			<div class="col-xs-6"><h2 class="form-signin-heading">
+				<input id="pr_txtcod" type="text" class="form-control" placeholder="C&oacute;digo"  onKeyPress="enter2tab(event,'unidades')" onBlur="producto_codigo()"></h2>
+			</div>
+		</div>        
+        <select id="productos" class="form-control input-lg" onChange="seleccionarProducto()">
+		</select> 
+		<div class="row">
+			<div class="col-xs-3" align="center">
+				Unidades
+			</div>
+			<div class="col-xs-3" align="center">
+				Cantidad
+			</div>
+			<div class="col-xs-3" align="center">
+				Unitario
+			</div>
+			<div class="col-xs-3" align="center">
+				total
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<input id="unidades" type="text" class="form-control" placeholder="Cantidad"  onKeyPress="enter2tab(event,'cantidad')" onBlur="precioTotal()">
+			</div>
+			<div class="col-xs-3">
+				<input id="cantidad" type="text" class="form-control" placeholder="Cantidad"  onKeyPress="enter2tab(event,'precio_unitario')" onBlur="precioTotal();ControlProductLimit()">
+			</div>
+			<div class="col-xs-3">
+				<input id="precio_unitario" type="text" class="form-control" placeholder="Pre.Unitario" onKeyPress="enter2tab(event,'agregar_producto')" onBlur="precioTotal()">
+			</div>
+			<div class="col-xs-3">
+				<input id="precio_total" type="text" class="form-control" placeholder="Pre. Total" disabled>
+			</div>
+		</div>
+        <br/>
+		<div class="row">
+			<div class="col-xs-6" align="left">
+			<button type="button" id="terminar" class="btn btn-primary" onClick="facura_confirmar()">Generar Comprobante</button>
+            </div>
+			<div class="col-xs-6" align="right">
+			<button type="button" id="agregar_producto" class="btn btn-primary" onClick="agregarProducto()">Agregar Producto</button>
+            </div>
+		</div>
+        <!--
+        <div style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+        <div id="desc_comp"><h4 class="form-signin-heading text-center">----</h4></div>
+        </div>
+        -->
+    </div> <!-- Fin tab productos -->
+
+	<div id="tab_comprobante"> <!-- Comienzo muestra comprobante -->
+      <!-- <h3>Comprobante</h3> -->
+		<table id="muestra_comprobante" class="table table-striped">
+			<thead>
+				<tr>
+				<th style="visibility: hidden"></th>
+                <th>Producto</th>
+				<th>Unid.</th>
+				<th>Cant.</th>
+				<th>P.Unit</th>
+				<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table> 
+        <div id="total_factura"><h4 class="text-center" >Total : 0.00</h4></div>
+	</div> <!-- Fin muestra comprobante -->
+	<!-- </div> -->
+	<button class="btn btn-lg btn-danger btn-block" onClick="location='facturar_02.html';" >Volver</button> 
+
+     <img class="img-responsive center-block" src="img/facturar.png" alt="Login">
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+      </body>
+      
+</html>
+
