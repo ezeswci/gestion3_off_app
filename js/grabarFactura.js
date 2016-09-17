@@ -8,7 +8,7 @@ function facura_confirmar(){
 	var cliente = getCookie('contacto_razon_social');	
 	var total_factura = getCookie('total_factura');
 	
-	var texto = '<p>Esta seguro de generar el siguiente comprobante :</p><p>Tipo de comprobante : <b>'+detalle_comprobante+'</b></p><p>Cliente : <b>'+cliente+'</b></p>Por un importe de  : $ <b>'+total_factura+'</b> m&aacute;s impuestos';
+	var texto = '<p>Esta seguro de guardar el siguiente comprobante :</p><p>Tipo de comprobante : <b>'+detalle_comprobante+'</b></p><p>Cliente : <b>'+cliente+'</b></p>Por un importe de  : $ <b>'+total_factura+'</b> m&aacute;s impuestos';
 	
             BootstrapDialog.show({
                 type: BootstrapDialog.TYPE_DANGER,
@@ -25,6 +25,8 @@ function facura_confirmar(){
 				   	cssClass: 'btn-danger',
                 	action: function(dialogItself){
                    	 dialogItself.close();
+					 closeLoadingAnimation();
+
                 	}
                 }]
             });     
@@ -41,14 +43,14 @@ function grabarFactura(){
 	var usuario = getCookie('usuario');
 	var www = getCookie('www');
 
-
 	//--------------------------
 	var table = document.getElementById("muestra_comprobante");
 	var filas = table.rows.length;
 	var error = '';
 	if(filas < 2){error = error+"<p>Debe ingresar por lo menos una l&iacute;nea para generar un comprobante</p>"};
-	if(error.length > 0){mostrar_alerta('Generaci&oacute;n de Comprobante',error,BootstrapDialog.TYPE_DANGER);return}
-	
+	if(error.length > 0){mostrar_alerta('Generaci&oacute;n de Comprobante',error,BootstrapDialog.TYPE_DANGER);
+						closeLoadingAnimation();
+						return}
 	var productos =[];
 	for (var i = 1; row = table.rows[i]; i++) {
 	//iteracion de filas
@@ -74,7 +76,7 @@ function grabarFactura(){
 	setCookie('factura', facturaJson, 1);
 	//setCookie('factura_id', respuesta.factura, 1);
 	//setCookie('factura_nro', respuesta.numero, 1);
-	setCookie('factura_total', respuesta.total, 1);
-	setCookie('dir_mail', respuesta.dir_mail, 1);
+	setCookie('factura_total', getCookie('total_factura'), 1);
+	closeLoadingAnimation();
 	location.href='facturar_04.html'
 }
