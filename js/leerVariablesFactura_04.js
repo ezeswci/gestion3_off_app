@@ -1,4 +1,3 @@
-
 function leerVariablesFactura(){
 			var tipo_comprobante = getCookie('tipo_comprobante');
 			var cliente = getCookie('contacto_razon_social');
@@ -19,12 +18,4 @@ function leerVariablesFactura(){
 		   document.getElementById('desc_cliente').innerHTML = "<h4 class='form-signin-heading text-center'>"+cliente+"</h4>"
 		   document.getElementById('tot_factura').innerHTML = "<h3 class='form-signin-heading text-center'>Importe Total $ "+factura_total+"</h3>"
 		   document.getElementById('dir_mail').value = dir_mail;
-		   if (cae.length > 2){
-			   var btnCae = '<p align="center"><button id="cae" class="btn btn-lg btn-primary btn-block">C.A.E. Otorgado = '+cae+'</button></p>';
-			   document.getElementById("pedir_cae").innerHTML=btnCae;
-			   }
-		   if (tipo_comprobante == 11){
-			   var btnCae = '<p align="center"><button id="cae" class="btn btn-lg btn-primary btn-block">&nbsp;</button></p>';
-			   document.getElementById("pedir_cae").innerHTML=btnCae;
-			   }
 }
