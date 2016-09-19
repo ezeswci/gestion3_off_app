@@ -1,4 +1,4 @@
-document.addEventListener('deviceready', onDeviceReady);
+//document.addEventListener('deviceready', onDeviceReady);
 function onDeviceReady()
 {
         var success = function(status) {
