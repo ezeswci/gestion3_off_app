@@ -83,6 +83,7 @@
 	<gap:plugin name="cordova-plugin-network-information" version="1.0.1" />
 	<plugin name="com.footprint.cordova.plugin.local-notification" spec="0.8.0" source="pgb" />
 	<plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
+	<plugin name="at.modalog.cordova.plugin.html2pdf" spec="1.0.119" source="pgb" /> <!-- html a pdf -->
 	<!-- GeoLocation platform. -->
 	
 	<!-- Define app icon for each platform. -->	
