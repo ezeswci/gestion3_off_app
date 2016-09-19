@@ -8,7 +8,7 @@ function facura_confirmar(){
 	var cliente = getCookie('contacto_razon_social');	
 	var total_factura = getCookie('total_factura');
 	
-	var texto = '<p>Esta seguro de guardar el siguiente comprobante :</p><p>Tipo de comprobante : <b>'+detalle_comprobante+'</b></p><p>Cliente : <b>'+cliente+'</b></p>Por un importe de  : $ <b>'+total_factura+'</b> m&aacute;s impuestos';
+	var texto = '<p>Esta xxx seguro de guardar el siguiente comprobante :</p><p>Tipo de comprobante : <b>'+detalle_comprobante+'</b></p><p>Cliente : <b>'+cliente+'</b></p>Por un importe de  : $ <b>'+total_factura+'</b> m&aacute;s impuestos';
 	
             BootstrapDialog.show({
                 type: BootstrapDialog.TYPE_DANGER,
@@ -67,15 +67,25 @@ function grabarFactura(){
 		//alert("prod_id"+prod_id+"prod_detalle"+prod_detalle+"prod_unidad"+prod_unidad+"prod_cant"+prod_cant+"prod_unit"+prod_unit+"prod_total"+prod_total);
 		productos[i-1] = {"prod_id":prod_id,"prod_detalle":prod_detalle,"prod_unidad":prod_unidad,"prod_cant":prod_cant,"prod_unit":prod_unit,"prod_total":prod_total};
 	}
+	var d = new Date();
+	var dd = d.getDate();
+	var mm = d.getMonth()+1; //hoy es 0!
+	var hh = d.getHours();
+	var ii = d.getMinutes();
+	if(dd<10) {dd='0'+dd} 
+	if(mm<10) {mm='0'+mm} 
+	if(hh<10) {hh='0'+hh} 
+	if(ii<10) {ii='0'+ii} 
+	var yyyy = d.getFullYear();	
+	var Numero = yyyy+'-'+mm+dd+hh+ii;
 
-	var facturaJson=JSON.stringify({"cabecera":{"empresa":empresa,"usuario":usuario,"tipo_comprobante":tipo_comprobante,"cliente":id,"cond_venta":cond_venta,},"productos":productos});
+	var facturaJson=JSON.stringify({"cabecera":{"numero":Numero,"empresa":empresa,"usuario":usuario,"tipo_comprobante":tipo_comprobante,"cliente":id,"cond_venta":cond_venta,},"productos":productos});
 
 	/***************************************************
 	*** Grabar la factura en memoria del dispositivo ***
 	***************************************************/
 	setCookie('factura', facturaJson, 1);
-	//setCookie('factura_id', respuesta.factura, 1);
-	//setCookie('factura_nro', respuesta.numero, 1);
+	setCookie('factura_nro', Numero, 1);
 	setCookie('factura_total', getCookie('total_factura'), 1);
 	closeLoadingAnimation();
 	location.href='facturar_04.html'

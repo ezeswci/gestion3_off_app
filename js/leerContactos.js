@@ -6,6 +6,7 @@ var x = document.getElementById("contactos");
 //alert('z = '+getCookie('contactosJson'))
 var z = JSON.parse(getCookie('contactosJson'));
 var i = 0;
+
 var option = document.createElement("option");
 option.text = 'Seleccione un contacto';
 option.value = '0';

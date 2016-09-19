@@ -1,4 +1,5 @@
 function validar_usuario(){
+	//alert('validar');
 	var www = document.getElementById("web").value;
 	var usuario = document.getElementById("usuario").value;
 	var clave = document.getElementById("clave").value;
@@ -6,9 +7,11 @@ function validar_usuario(){
 	var error = '';
 	if(empresa.length < 1){error = error+"<p>El campo <b>empresa</b> es obligatorio</p>"};
 	if(clave.length < 1){error = error+"<p>El campo <b>clave</b> es obligatorio</p>"};
-	if(usuario.length < 1){error = error+"<p>El campo <b>Usuario</b> es obligatorio</p>"};
+	if(usuario.length < 1){error = error+"<p>El campo xxx<b>Usuario</b> es obligatorio</p>"};
 	if(error.length > 0){mostrar_alerta('Campos Obligatorios',error,BootstrapDialog.TYPE_DANGER);return}
 	var json=JSON.stringify({"usuario":usuario,"clave":clave,"empresa":empresa});
+
+	startLoadingAnimation();
 	var xmlhttp;
 	if (window.XMLHttpRequest)
  			 {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -30,7 +33,10 @@ function validar_usuario(){
 							{setCookie('empresa', empresa, 100);
 							 setCookie('usuario', usuario, 100);
 							 setCookie('www', www, 100);
-							 location.href='menu.html'
+							 CargarInformacion();
+							 //alert('fin');
+							 location.href='index.html'
+							 //location.href='menu.html'
 							}
 							else{
 							var error = "Intentelo Nuevamente, de persistir verifique su conexi&oacute;n a internet. Si ese no es el inconveniente comunicarse con Sistemas"
@@ -39,7 +45,6 @@ function validar_usuario(){
 				
     		  }
      		}
-			//alert('ruta xxx = '+window.swciRuta);
 			//alert(www+"/app_php/validar_usuario.php"+json);
 			//----------------------
 			xmlhttp.open("POST",www+"/app_php/validar_usuario.php",true);
