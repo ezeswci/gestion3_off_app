@@ -1,6 +1,6 @@
 //document.addEventListener('deviceready', onDeviceReady);
 function imprimir_factura()
-{		alert(imprimir);
+{		alert('imprimir');
 		var cliente = getCookie('contacto_razon_social');	
 		var total_factura = getCookie('total_factura');
 
