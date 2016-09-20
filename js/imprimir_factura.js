@@ -18,22 +18,19 @@ function imprimir_factura()
 	var yyyy = d.getFullYear();	
 	var fecha = dd+'/'+dd+'/'+yyyy;
 	//--------------------------------
-	alert('2116');
-	alert(getCookie('factura'));
+	//alert(getCookie('factura'));
 	var factura = JSON.parse(getCookie('factura'));
-	alert(factura.cabecera.empresa)
 	var z = factura.productos;
-	alert(z[0].prod_id);
-	var productos = "<table border='1' cellpadding='0' 'style='font-size:1.1em;'><tr><td>Producto</td><td>Detalle</td><td>Bultos</td><td>Cantidad</td><td>Unitario</td><td>Total</td></tr>"
+	var productos = "<tr><td width='80' align='center'>C&oacute;digo</td><td width='300' align='left'>Detalle</td><td width='80' align='center'>Und.</td><td width='80' align='right'>Bultos</td><td width='150' align='right'>Unnitario</td><td width='150' align='right'>Total</td></tr>";
 
 
 	for(items in z){
-		var productos = productos +"<tr><td>"+z[items].prod_id+"</td><td>"+z[items].prod_detalle+"</td><td>"+z[items].prod_unidad+"</td><td>"+z[items].prod_cant+"</td><td>"+z[items].prod_unit+"</td><td>"+z[items].prod_total+"</td></tr>";
-		alert('Producto :'+z[items].prod_id);
+		var productos = productos +"<tr><td width='80' align='center'>"+z[items].prod_id+"</td><td width='300' align='left'>"+z[items].prod_detalle+"</td><td width='80' align='center'>"+z[items].prod_unidad+"</td><td width='80' align='right'>"+z[items].prod_cant+"</td><td width='150' align='right'>"+z[items].prod_unit+"</td><td width='150' align='right' style='mso-number-format:\"#,##0.00\"'>"+z[items].prod_total+"</td></tr>";
+		//alert('Producto :'+z[items].prod_id);
 		}
 	
 	//--------------------------------
-		var page = '<h1>Fecha : '+fecha+'</h1><p></h1><p><h2>Se&ntilde;ores = '+cliente+'</p></h2><p>'+'Total Factura = '+factura_total+"</br>"+productos;
+		var page = '<h1>Fecha : '+fecha+'</h1><p></h1><p><h2>Se&ntilde;ores = '+cliente+'</p></h2><p>'+productos+'</p>Total Factura = '+factura_total;
 		alert(page);
 		cordova.plugins.printer.print(page, 'Document.html', function () {
 			alert('printing finished or canceled')
