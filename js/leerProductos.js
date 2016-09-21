@@ -65,7 +65,7 @@ function selectMedidaProductById(id){
 	z=window.productsArray;
 	for(items in z){
 		//alert(z[items].producto+'=='+id+' Contacto = '+contacto_id+' Lista = '+z[items].lista);
-		if(z[items].producto==id)
+		if(z[items].id==id)
 		return z[items].medida;
 	}
 	return 0;
@@ -140,8 +140,7 @@ function agregarProducto(){
     var cell5 = row.insertCell(4);
     var cell6 = row.insertCell(5);
 	var cell7 = row.insertCell(6);
-	var cell8 = row.insertCell(6);
-	
+	var cell8 = row.insertCell(7);
 	cell1.innerHTML = producto_id;
 	cell2.innerHTML = producto_nombre;
     cell3.innerHTML = producto_unidades;;
@@ -150,6 +149,7 @@ function agregarProducto(){
     cell6.innerHTML = producto_total;
 	cell7.innerHTML ='<i style="font-size: 1.2em;color: #d9534f;" class="fa fa-minus-circle" aria-hidden="true" onclick="BorrarFila(this);"></i>';
 	cell8.innerHTML = producto_medida;
+	alert(producto_total+'  '+ producto_medida)
 	//
 	cell1.style.visibility="hidden";
 	cell1.style.fontSize="0%";
@@ -160,6 +160,7 @@ function agregarProducto(){
 	cell5.style.textAlign="right";
 	cell6.style.textAlign="right";
 	cell7.style.textAlign="right";
+	cell8.style.textAlign="right";
 	//mostrar_alerta('Producto Agregado',producto_id+' '+producto_nombre,BootstrapDialog.TYPE_INFO);
 	
 	document.getElementById("pr_txtcod").value = ''; 

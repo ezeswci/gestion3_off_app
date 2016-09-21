@@ -1,6 +1,6 @@
 //document.addEventListener('deviceready', onDeviceReady);
 function imprimir_factura()
-{	alert('imprimir');	
+{		
 	// recuperar informacion	
 	var cliente = getCookie('contacto_razon_social');
 	var factura_nro = getCookie('factura_nro');
@@ -35,7 +35,7 @@ function imprimir_factura()
 	var linea_total = "<tr><td colspan = '4' align='center'><td width='150' align='right'> Total Presupuesto </td><td width='150' align='right' style='mso-number-format:\"#.##0,00\"'>"+val_final+"</td></tr>"
 	//--------------------------------
 		var page = '<h1>Fecha : '+fecha+'</h1><p></h1><p><h2>Se&ntilde;ores = '+cliente+'</p></h2><p>'+productos+linea_total+'</table>';
-		alert(page);
+		//alert(page);
 		//cordova.plugins.printer.print(page, 'Document.html', function () {alert('printing finished or canceled')});
 		cordova.plugins.printer.print(page, 'Document.html');
 }
