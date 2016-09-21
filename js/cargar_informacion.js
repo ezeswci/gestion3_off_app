@@ -1,10 +1,11 @@
 function CargarInformacion()
 {
 	startLoadingAnimation();
-	delete_cookie('productosJson');
-	delete_cookie('contactosJson');
-	delete_cookie('preciosJson');
-	delete_cookie('acumuladas');
+	delete_cookie('productosJson','',1);
+	delete_cookie('contactosJson','',1);
+	delete_cookie('preciosJson','',1);
+	delete_cookie('acumuladas','',1);
+	delete_cookie('factura_acumula','',1);
 	CargarProductos()
 	CargarContactos()
 	CargarPrecios()

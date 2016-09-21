@@ -8,7 +8,7 @@ function facura_confirmar(){
 	var cliente = getCookie('contacto_razon_social');	
 	var total_factura = getCookie('total_factura');
 	
-	var texto = '<p>Esta xxx seguro de guardar el siguiente comprobante :</p><p>Tipo de comprobante : <b>'+detalle_comprobante+'</b></p><p>Cliente : <b>'+cliente+'</b></p>Por un importe de  : $ <b>'+total_factura+'</b> m&aacute;s impuestos';
+	var texto = '<p>Esta seguro de guardar el siguiente comprobante :</p><p>Tipo de comprobante : <b>'+detalle_comprobante+'</b></p><p>Cliente : <b>'+cliente+'</b></p>Por un importe de  : $ <b>'+total_factura+'</b> m&aacute;s impuestos';
 	
             BootstrapDialog.show({
                 type: BootstrapDialog.TYPE_DANGER,
@@ -80,7 +80,7 @@ function grabarFactura(){
 	if(hh<10) {hh='0'+hh} 
 	if(ii<10) {ii='0'+ii} 
 	var yyyy = d.getFullYear();	
-	var Numero = yyyy+'-'+mm+dd+hh+ii;
+	var Numero = yyyy+mm+dd+hh+ii;
 	var factura_actual = {"cabecera":{"numero":Numero,"cliente":cliente,"cliente_id":id,"cond_venta":cond_venta,"total":total_factura,},"productos":productos}
 	var facturaJson=JSON.stringify(factura_actual);
 	//var acumuladas = [];
