@@ -21,7 +21,7 @@ function imprimir_factura()
 	//alert(getCookie('factura'));
 	var factura = JSON.parse(getCookie('factura'));
 	var z = factura.productos;
-	var productos = "<tr><td width='80' align='center'>C&oacute;digo</td><td width='300' align='left'>Detalle</td><td width='80' align='center'>Und.</td><td width='80' align='right'>Bultos</td><td width='150' align='right'>Unnitario</td><td width='150' align='right'>Total</td></tr>";
+	var productos = "<table border='1' cellpadding='0' align='center' width='100%' style='font-size:14px'><tr><td width='80' align='center'>C&oacute;digo</td><td width='300' align='left'>Detalle</td><td width='80' align='center'>Und.</td><td width='80' align='right'>Bultos</td><td width='150' align='right'>Unnitario</td><td width='150' align='right'>Total</td></tr>";
 
 
 	for(items in z){
@@ -30,7 +30,7 @@ function imprimir_factura()
 		}
 	
 	//--------------------------------
-		var page = '<h1>Fecha : '+fecha+'</h1><p></h1><p><h2>Se&ntilde;ores = '+cliente+'</p></h2><p>'+productos+'</p>Total Factura = '+factura_total;
+		var page = '<h1>Fecha : '+fecha+'</h1><p></h1><p><h2>Se&ntilde;ores = '+cliente+'</p></h2><p>'+productos+'</table></p>Total Factura = '+factura_total;
 		alert(page);
 		cordova.plugins.printer.print(page, 'Document.html', function () {
 			alert('printing finished or canceled')
