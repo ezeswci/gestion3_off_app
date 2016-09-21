@@ -63,9 +63,10 @@ function grabarFactura(){
 		var prod_cant = document.getElementById("muestra_comprobante").rows[i].cells[3].innerHTML;
 		var prod_unit = document.getElementById("muestra_comprobante").rows[i].cells[4].innerHTML;
 		var prod_total = document.getElementById("muestra_comprobante").rows[i].cells[5].innerHTML;
+		var prod_medida = document.getElementById("muestra_comprobante").rows[i].cells[8].innerHTML;
 		//}  
 		//alert("prod_id"+prod_id+"prod_detalle"+prod_detalle+"prod_unidad"+prod_unidad+"prod_cant"+prod_cant+"prod_unit"+prod_unit+"prod_total"+prod_total);
-		productos[i-1] = {"prod_id":prod_id,"prod_detalle":prod_detalle,"prod_unidad":prod_unidad,"prod_cant":prod_cant,"prod_unit":prod_unit,"prod_total":prod_total};
+		productos[i-1] = {"prod_id":prod_id,"prod_detalle":prod_detalle,"prod_unidad":prod_unidad,"prod_cant":prod_cant,"prod_unit":prod_unit,"prod_total":prod_total,"prod_medida":prod_medida};
 	}
 	var d = new Date();
 	var dd = d.getDate();

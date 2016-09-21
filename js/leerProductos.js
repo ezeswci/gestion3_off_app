@@ -37,12 +37,13 @@ function seleccionarProducto() {
 			  }
     var y = document.getElementById("productos").options; 
 	var producto_precio=selectProductById(y[x].value);
-
+	var producto_medida=selectMedidaProductById(y[x].value);
 
 	window.productsnombre=y[x].text;
 	window.productsid=y[x].value;
 	document.getElementById("pr_txtcod").value = y[x].value;
 	document.getElementById("precio_unitario").value = producto_precio;
+	document.getElementById("medida").value = producto_medida;
 }
 
 //Precio del producto
@@ -54,6 +55,18 @@ function selectProductById(id){
 		//alert(z[items].producto+'=='+id+' Contacto = '+contacto_id+' Lista = '+z[items].lista);
 		if(z[items].producto==id && contacto_id == z[items].lista)
 		return z[items].venta;
+	}
+	return 0;
+	//mostrar_alerta('Productos','Debe seleccionar un producto',BootstrapDialog.TYPE_DANGER);
+	//return null;
+}
+//unidades del producto
+function selectMedidaProductById(id){
+	z=window.productsArray;
+	for(items in z){
+		//alert(z[items].producto+'=='+id+' Contacto = '+contacto_id+' Lista = '+z[items].lista);
+		if(z[items].producto==id)
+		return z[items].medida;
 	}
 	return 0;
 	//mostrar_alerta('Productos','Debe seleccionar un producto',BootstrapDialog.TYPE_DANGER);
@@ -101,6 +114,7 @@ function agregarProducto(){
 	var producto_cantidad = document.getElementById("cantidad").value; 
 	var producto_precio = document.getElementById("precio_unitario").value; 
 	var producto_total = document.getElementById("precio_total").value;
+	var producto_medida = document.getElementById("medida").value;
 	var producto_nombre = window.productsnombre;
 	var producto_id = window.productsid;
 	var total_factura = getCookie('total_factura');
@@ -126,6 +140,7 @@ function agregarProducto(){
     var cell5 = row.insertCell(4);
     var cell6 = row.insertCell(5);
 	var cell7 = row.insertCell(6);
+	var cell8 = row.insertCell(6);
 	
 	cell1.innerHTML = producto_id;
 	cell2.innerHTML = producto_nombre;
@@ -134,6 +149,7 @@ function agregarProducto(){
     cell5.innerHTML = producto_precio;
     cell6.innerHTML = producto_total;
 	cell7.innerHTML ='<i style="font-size: 1.2em;color: #d9534f;" class="fa fa-minus-circle" aria-hidden="true" onclick="BorrarFila(this);"></i>';
+	cell8.innerHTML = producto_medida;
 	//
 	cell1.style.visibility="hidden";
 	cell1.style.fontSize="0%";
@@ -149,6 +165,7 @@ function agregarProducto(){
 	document.getElementById("pr_txtcod").value = ''; 
 	document.getElementById("unidades").value = ''; 
 	document.getElementById("cantidad").value = ''; 
+	document.getElementById("medida").value = ''; 
 	document.getElementById("precio_unitario").value = '';
 	document.getElementById("precio_total").value = '';
 	document.getElementById("productos").value = '0';
