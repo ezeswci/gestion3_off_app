@@ -25,12 +25,12 @@ function imprimir_factura()
 
 
 	for(items in z){
-		var productos = productos +"<tr><td width='80' align='center'>"+z[items].prod_id+"</td><td width='300' align='left'>"+z[items].prod_detalle+"</td><td width='80' align='center'>"+z[items].prod_unidad+"</td><td width='80' align='right'>"+z[items].prod_cant+"</td><td width='150' align='right'>"+z[items].prod_unit+"</td><td width='150' align='right' style='mso-number-format:\"#,##0.00\"'>"+z[items].prod_total+"</td></tr>";
+		var productos = productos +"<tr><td width='80' align='center'>"+z[items].prod_id+"</td><td width='300' align='left'>"+z[items].prod_detalle+"</td><td width='80' align='center'>"+z[items].prod_unidad+"</td><td width='80' align='right'>"+z[items].prod_cant+"</td><td width='150' align='right'>"+z[items].prod_unit+"</td><td width='150' align='right' style='mso-number-format:\"#.##0,00\"'>"+z[items].prod_total+"</td></tr>";
 		//alert('Producto :'+z[items].prod_id);
 		}
-	
+	var linea_total = "<tr><td colspan = '4' align='center'><td width='150' align='right'> Total Presupuesto </td><td width='150' align='right' style='mso-number-format:\"#.##0,00\"'>"+factura_total+"</td></tr>"
 	//--------------------------------
-		var page = '<h1>Fecha : '+fecha+'</h1><p></h1><p><h2>Se&ntilde;ores = '+cliente+'</p></h2><p>'+productos+'</table></p>Total Factura = '+factura_total;
+		var page = '<h1>Fecha : '+fecha+'</h1><p></h1><p><h2>Se&ntilde;ores = '+cliente+'</p></h2><p>'+productos+linea_total+'</table>';
 		alert(page);
 		cordova.plugins.printer.print(page, 'Document.html', function () {
 			alert('printing finished or canceled')
