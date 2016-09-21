@@ -149,7 +149,6 @@ function agregarProducto(){
     cell6.innerHTML = producto_total;
 	cell7.innerHTML ='<i style="font-size: 1.2em;color: #d9534f;" class="fa fa-minus-circle" aria-hidden="true" onclick="BorrarFila(this);"></i>';
 	cell8.innerHTML = producto_medida;
-	alert(producto_total+'  '+ producto_medida)
 	//
 	cell1.style.visibility="hidden";
 	cell1.style.fontSize="0%";

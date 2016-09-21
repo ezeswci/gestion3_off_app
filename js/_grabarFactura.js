@@ -83,20 +83,13 @@ function grabarFactura(){
 	var Numero = yyyy+'-'+mm+dd+hh+ii;
 	var factura_actual = {"cabecera":{"numero":Numero,"cliente":cliente,"cliente_id":id,"cond_venta":cond_venta,"total":total_factura,},"productos":productos}
 	var facturaJson=JSON.stringify(factura_actual);
-	//var acumuladas = [];
-	if(getCookie('acumuladas').length>4){
-			var acumuladas = JSON.parse(getCookie('acumuladas'));}
-			else
-			{var acumuladas = [];}
-	acumuladas.push(factura_actual);
-	//var facturaAcumula=JSON.stringify({"comprobantes":[{"cabecera":{"numero":Numero,"cliente":cliente,"cliente_id":id,"cond_venta":cond_venta,"total":total_factura},"productos":productos}]});
-	var facturaAcumula=JSON.stringify({"comprobantes":acumuladas});
+
+	var facturaAcumula=JSON.stringify({"comprobantes":[{"cabecera":{"numero":Numero,"cliente":cliente,"cliente_id":id,"cond_venta":cond_venta,"total":total_factura},"productos":productos}]});
+
 	/***************************************************
 	*** Grabar la factura en memoria del dispositivo ***
 	***************************************************/
-	//alert('Acumulado facturas '+facturaAcumula)
-
-	setCookie('acumuladas', JSON.stringify(acumuladas), 1);
+	alert('Acumulado facturas '+facturaAcumula)
 	setCookie('factura', facturaJson, 1);
 	setCookie('factura_acumula', facturaAcumula, 1);
 	setCookie('factura_nro', Numero, 1);
