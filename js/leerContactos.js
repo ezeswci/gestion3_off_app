@@ -1,5 +1,26 @@
 function leerContactos(tipo)
 {
+
+	if(getCookie('contactosJson').length>4){
+			levantarContactos()}
+			else
+			{BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_DANGER,
+                title: 'Sicrinizar',
+                message: 'Debe sincronizar el dispositivo con el sistema central antes de comenzar a operar',
+                buttons: [{
+                   label: 'Aceptar',
+				   cssClass: 'btn-success',
+                	action: function(){
+					 location.href='index.html'
+                	}
+                }]
+            });     
+			}
+}
+
+function levantarContactos(tipo)
+{
 startLoadingAnimation();
 
 var x = document.getElementById("contactos");

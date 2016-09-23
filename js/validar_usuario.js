@@ -1,5 +1,4 @@
-function validar_usuario(){
-	//alert('validar');
+function validar_usuario(programa){
 	var www = document.getElementById("web").value;
 	var usuario = document.getElementById("usuario").value;
 	var clave = document.getElementById("clave").value;
@@ -11,7 +10,7 @@ function validar_usuario(){
 	if(error.length > 0){mostrar_alerta('Campos Obligatorios',error,BootstrapDialog.TYPE_DANGER);return}
 	var json=JSON.stringify({"usuario":usuario,"clave":clave,"empresa":empresa});
 
-	startLoadingAnimation();
+	//startLoadingAnimation();
 	var xmlhttp;
 	if (window.XMLHttpRequest)
  			 {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -27,15 +26,15 @@ function validar_usuario(){
   				if (xmlhttp.readyState==4 && xmlhttp.status==200)
    			 {
     			value=xmlhttp.responseText;
-				//alert(value);
 				respuesta = JSON.parse(xmlhttp.responseText);
 				if(respuesta.estado!=0)
 							{setCookie('empresa', empresa, 100);
 							 setCookie('usuario', usuario, 100);
 							 setCookie('www', www, 100);
-							 CargarInformacion();
+							 if(programa == 1){CargarInformacion();}
+							 if(programa == 2){descargar();}
 							 //alert('fin');
-							 location.href='index.html'
+							 //location.href='index.html'
 							 //location.href='menu.html'
 							}
 							else{

@@ -20,4 +20,3 @@ var types = [BootstrapDialog.TYPE_DEFAULT,
 	BootstrapDialog.TYPE_WARNING, 
 	BootstrapDialog.TYPE_DANGER];
 */
-function prueba(){alert('hola prueba')}

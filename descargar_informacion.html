@@ -25,7 +25,7 @@
     <!-- Custom styles for this template -->
     <link href="css/signin.css" rel="stylesheet"> 
 
-	<script src="js/cargar_informacion.js"></script>
+	<script src="js/descargar.js"></script>
     <script src="js/mostrar_alerta.js"></script>
 	<script src="js/validar_usuario.js"></script>
 	<script src="js/Cookie_swci.js"></script>
@@ -49,7 +49,7 @@
 	<form class="form-signin">
     <div id="swciMensaje" style="display:none" onClick="cerrar_alerta()"></div>
 		<h1 class="text-center" >Gesti&oacute;n Comercial</h1>
-        <h2 class="form-signin-heading text-center">Cargar informacion</h2>
+        <h3 class="form-signin-heading text-center">Descargar Informaci&oacute;n</h3>
 		<label for="empresa" class="sr-only">Direccion Web</label>
         <input type="text" id="web" class="form-control" placeholder="direccion web o IP">
 		<label for="empresa" class="sr-only">Empresa</label>
@@ -63,7 +63,7 @@
         </div>
 	</form>
 		<div class="row">
-			<button type="button" id="agregar_producto" class="btn btn-primary btn-block" onClick="validar_usuario(1)">Cargar Informaci&oacute;n</button>
+			<button type="button" id="agregar_producto" class="btn btn-primary btn-block" onClick="validar_usuario(2)">Descargar Informaci&oacute;n</button>
 			<br/>
 			<button type="button" id="terminar" class="btn btn-danger btn-block" onClick="location='index.html';">Volver</button>
 		</div>

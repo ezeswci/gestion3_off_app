@@ -1,9 +1,6 @@
 function leerVariablesMostrar()
 {
 //alert('leer comprobantes');
-var empresa = getCookie('empresa');
-var usuario = getCookie('usuario');
-var www = getCookie('www');
 var fecha = getCookie('fecha');
 var factura_id = getCookie('factura_id');
 
