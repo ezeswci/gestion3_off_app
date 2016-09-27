@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.Facturar SWCI"
+        id        = "com.Presupuestos SWCI"
         version   = "1.0.0">
 
-    <name>Facturar SWCI</name>
+    <name>Presupuestos SWCI</name>
 
     <description>
-        Generación de facturas
+        Generación de Presupuestos
     </description>
 
     <author href="http://www.swci.com.ar" email="info@swci.com.ar">

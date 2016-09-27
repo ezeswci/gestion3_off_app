@@ -29,18 +29,25 @@ function mostrarPresupuReserva (comprobante){
 	if(z[items].cabecera.numero == comprobante ){
 		var cliente = z[items].cabecera.cliente;	
 		var total_factura = z[items].cabecera.total;
+		var cliente_id = z[items].cabecera.cliente_id;
 		// Cargar los productos
-		var y =JSON.stringify(z[items].productos);
+		//var y =JSON.stringify(z[items].productos);
 		//alert('cliente '+cliente);
 		//alert('total_factura '+total_factura);
-		//alert('Productos = '+y);
-		var factura_actual = {"cabecera":{"numero":comprobante,"cliente":cliente,"cliente_id":0,"cond_venta":0,"total":total_factura,},"productos":y}
+		//alert('Productos 3 = '+y);
+		var factura_actual = {"cabecera":{"numero":comprobante,"cliente":cliente,"cliente_id":cliente_id,"cond_venta":0,"total":total_factura,},"productos":z[items].productos}
 		var facturaJson=JSON.stringify(factura_actual);
-		location.href='facturar_04.html'
+		//----------------------
+		setCookie('factura_nro', comprobante, 1);
+		setCookie('factura_total', total_factura, 1);
+		setCookie('contacto_razon_social', cliente, 1);
+		setCookie('contacto_id', cliente_id, 1);
+		setCookie('factura', facturaJson, 1);
 
-	}
-	//pant += '<tr style="font-size:80%" onclick="mostrarPresupuReserva('+z[items].cabecera.numero+')"><td>'+z[items].cabecera.numero+'</td><td>'+z[items].cabecera.cliente+'</td><td>'+z[items].cabecera.total+'</td></tr>'
-
+		//-----------------------
+		location.href='facturar_04.html';
+		break;
+		}
 	}
 
 	//location.href='ver_presup_reserva_02.html'

@@ -19,7 +19,9 @@ function imprimir_factura()
 	var fecha = dd+'/'+dd+'/'+yyyy;
 	//--------------------------------
 	//alert(getCookie('factura'));
+	//alert('2');
 	var factura = JSON.parse(getCookie('factura'));
+	//alert('2');
 	var z = factura.productos;
 	var productos = "<table border='1' cellpadding='0' align='center' width='100%' style='font-size:14px'><tr><td width='80' align='center'>C&oacute;digo</td><td width='300' align='left'>Detalle</td><td width='80' align='center'>Undidad</td><td width='80' align='right'>Cantidad</td><td width='150' align='right'>Imp. Unit.</td><td width='150' align='right'>Total</td></tr>";
 
@@ -35,6 +37,7 @@ function imprimir_factura()
 	var linea_total = "<tr><td colspan = '4' align='center'><td width='150' align='right'> Total Presupuesto </td><td width='150' align='right' style='mso-number-format:\"#.##0,00\"'>"+val_final+"</td></tr>"
 	//--------------------------------
 		var page = '<h1>Fecha : '+fecha+'</h1><p></h1><p><h2>Presupuesto Nro : = '+factura_nro+'</p></h2><h2>Se&ntilde;ores = '+cliente+'</p></h2><p>'+productos+linea_total+'</table>';
+
 		//alert(page);
 		//cordova.plugins.printer.print(page, 'Document.html', function () {alert('printing finished or canceled')});
 		cordova.plugins.printer.print(page, 'Document.html');
